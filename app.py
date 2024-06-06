@@ -632,7 +632,7 @@ def filtro(equipe, propaganda, theme, periodo):
     df3 = dff.groupby(axis_x, observed=True)["Chamadas Realizadas"].sum().reset_index()
     fig3 = px.area(df3, x=axis_x, y="Chamadas Realizadas")
     fig3.add_annotation(
-        text=f"Soma de Chamadas por {axis_x.replace("_","")}",
+        text=f'Soma de Chamadas por {axis_x.replace("_","")}',
         xref="paper",
         yref="paper",
         align="center",
