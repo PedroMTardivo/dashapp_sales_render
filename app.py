@@ -7,6 +7,16 @@ from datetime import datetime
 import dash_mantine_components as dmc
 from dash_bootstrap_templates import ThemeSwitchAIO
 
+dash._dash_renderer._set_react_version("18.2.0")
+app = Dash(
+    __name__,
+    external_stylesheets=[
+        dbc.icons.BOOTSTRAP,
+        "https://unpkg.com/@mantine/dates@7/styles.css",
+    ],
+)
+server = app.server
+
 # tratamento dos dados
 df = pd.read_csv(r"sales_dataset.csv")
 df["Valor Pago"] = df["Valor Pago"].str.lstrip("R$ ").astype(int)
@@ -95,14 +105,7 @@ axes_theme_light = {
     "linewidth": 2,
 }
 
-dash._dash_renderer._set_react_version("18.2.0")
-app = Dash(
-    __name__,
-    external_stylesheets=[
-        dbc.icons.BOOTSTRAP,
-        "https://unpkg.com/@mantine/dates@7/styles.css",
-    ],
-)
+
 
 filtro_ad = html.Div(
     [
